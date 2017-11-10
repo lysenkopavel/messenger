@@ -39,10 +39,10 @@
                 <column name="NICKNAME" length="100"/>
             </basic>
 
-            <many-to-many name="userChats" fetch="EAGER">
+            <many-to-many name="userChats">
                 <join-table name="USERS_CHATS">
-                    <join-column name="USER_ID" referenced-column-name="USER_ID"/>
-                    <inverse-join-column name="CHAT_ID" referenced-column-name="CHAT_ID"/>
+                    <join-column name="U_ID" referenced-column-name="USER_ID"/>
+                    <inverse-join-column name="C_ID" referenced-column-name="CHAT_ID"/>
                 </join-table>
                 <cascade>
                     <cascade-all/>
@@ -68,6 +68,9 @@
             </basic>
 
             <many-to-many name="usersInChat" mapped-by="userChats" fetch="EAGER">
+                <cascade>
+                    <cascade-all/>
+                </cascade>
             </many-to-many>
 
 

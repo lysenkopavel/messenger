@@ -33,25 +33,25 @@ public class Main {
         u2.setUserChats(setChat);
         u3.setUserChats(setChat);
 
-        //TODO
-        Set<User> userSet = new HashSet<User>();
-        userSet.add(u1);
-        userSet.add(u2);
-        userSet.add(u3);
-        chat.setUsersInChat(userSet);
+//        //TODO
+//        Set<User> userSet = new HashSet<User>();
+//        userSet.add(u1);
+//        userSet.add(u2);
+//        userSet.add(u3);
+//        chat.setUsersInChat(userSet);
 
         ObjectDAO.beginTransaction();
-        daoChat.create(chat);
+//        daoChat.create(chat);
         daoUser.create(u1);
         daoUser.create(u2);
         daoUser.create(u3);
         daoUser.showAll();
-        daoChat.showAll();
+//        daoChat.showAll();
         System.out.println("----------------------------");
 //        u1.setUserChats(new HashSet<Chat>());
         daoUser.delete(u1);
         daoUser.showAll();
-        daoChat.showAll();
+//        daoChat.showAll();
         ObjectDAO.commitTransaction();
 
     }
