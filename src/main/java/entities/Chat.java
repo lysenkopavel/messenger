@@ -36,7 +36,7 @@ public class Chat {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(chatID);
         sb.append("\t'");
         sb.append(chatTitle);

@@ -35,7 +35,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        StringBuffer sb = new StringBuffer();
+        StringBuilder sb = new StringBuilder();
         sb.append(userID);
         sb.append("\t'");
         sb.append(nickname);

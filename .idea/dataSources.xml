@@ -8,7 +8,7 @@
       <jdbc-driver>oracle.jdbc.driver.OracleDriver</jdbc-driver>
       <jdbc-url>jdbc:oracle:thin:@localhost:1521:XE</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="@localhost" uuid="334089ab-2bd3-42ad-b4b8-65ff56aecdc8">
+    <data-source source="LOCAL" name="@localhost" uuid="27c910e9-e08e-4c94-85e3-0686755d24e5">
       <driver-ref>oracle</driver-ref>
       <synchronize>true</synchronize>
       <auto-commit>false</auto-commit>

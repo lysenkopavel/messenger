@@ -4,7 +4,7 @@
         xmlns="http://java.sun.com/xml/ns/persistence/orm"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm
-						http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
+						    http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
         version="2.0">
 
 
@@ -39,7 +39,7 @@
                 <column name="NICKNAME" length="100"/>
             </basic>
 
-            <many-to-many name="userChats">
+            <many-to-many name="userChats" fetch="EAGER">
                 <join-table name="USERS_CHATS">
                     <join-column name="U_ID" referenced-column-name="USER_ID"/>
                     <inverse-join-column name="C_ID" referenced-column-name="CHAT_ID"/>
