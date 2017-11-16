@@ -51,6 +51,7 @@ public class Main {
         message.setMessID(new MessagePrimaryKey(u3.getUserID(), chat.getChatID(), 0));
         message.setMessageTime(new Date());
 
+        //
         daoMessage.create(message);
 
 
