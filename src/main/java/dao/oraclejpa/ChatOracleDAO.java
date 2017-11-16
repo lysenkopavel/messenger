@@ -29,8 +29,5 @@ public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService{
         em.getTransaction().commit();
     }
 
-    public void updateObjectFromDB(Chat chat) {
-        em.refresh(chat);
-    }
 
 }

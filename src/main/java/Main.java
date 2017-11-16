@@ -1,12 +1,7 @@
 import dao.factory.DAOFactory;
-import dao.oraclejpa.OracleJpaDao;
-import dao.service.ChatService;
-import dao.service.EntityService;
-import dao.service.UserService;
+import dao.service.*;
 import entities.*;
 
-import javax.persistence.EntityManager;
-import javax.persistence.Persistence;
 import java.util.*;
 
 
@@ -19,6 +14,10 @@ public class Main {
         DAOFactory daoObject = DAOFactory.getDAOFactory(DAOFactory.ORACLE_JPA);
         UserService daoUser = daoObject.getUserDAO();
         ChatService daoChat = daoObject.getChatDAO();
+        MessageService daoMessage = daoObject.getMessageService();
+
+        Chat chat = new Chat();
+        chat.setChatTitle("MyChat");
 
         User u1 = new User();
         User u2 = new User();
@@ -26,15 +25,12 @@ public class Main {
         u1.setNickname("Ivan");
         u2.setNickname("Petr");
         u3.setNickname("Max");
-
-        Chat chat = new Chat();
-        chat.setChatTitle("MyChat");
-
         Set<Chat> setChat = new HashSet<Chat>();
         setChat.add(chat);
         u1.setUserChats(setChat);
         u2.setUserChats(setChat);
         u3.setUserChats(setChat);
+
 
         daoChat.create(chat);
         daoUser.create(u1);
@@ -43,12 +39,20 @@ public class Main {
         daoChat.updateObjectFromDB(chat);
         daoUser.showAll();
         daoChat.showAll();
-        System.out.println("----------------------------");
-        u1.setUserChats(new HashSet<Chat>());
-        daoUser.update(u1);
-        daoChat.updateObjectFromDB(chat);
-        daoUser.showAll();
-        daoChat.showAll();
+//        System.out.println("----------------------------");
+//        u1.setUserChats(new HashSet<Chat>());
+//        daoUser.update(u1);
+//        daoChat.updateObjectFromDB(chat);
+//        daoUser.showAll();
+//        daoChat.showAll();
+
+        Message message = new Message();
+        message.setMessage("test text");
+        message.setMessID(new MessagePrimaryKey(u3.getUserID(), chat.getChatID(), 0));
+        message.setMessageTime(new Date());
+
+        daoMessage.create(message);
+
 
     }
 

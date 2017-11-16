@@ -10,4 +10,6 @@ public interface EntityService<T> {
 
     T read(int id);
 
+    void updateObjectFromDB(T entity);
+
 }

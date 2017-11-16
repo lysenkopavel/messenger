@@ -6,6 +6,4 @@ public interface ChatService extends EntityService<Chat> {
 
     void showAll();
 
-    void updateObjectFromDB(Chat chat);
-
 }

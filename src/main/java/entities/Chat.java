@@ -1,13 +1,13 @@
 package entities;
 
+import java.io.Serializable;
 import java.util.Set;
 
-public class Chat {
+public class Chat implements Serializable {
 
     private int chatID;
     private String chatTitle;
     private Set<User> usersInChat;
-
 
     public String getChatTitle() {
         return chatTitle;
@@ -33,7 +33,6 @@ public class Chat {
         this.usersInChat = usersInChat;
     }
 
-
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -41,9 +40,11 @@ public class Chat {
         sb.append("\t'");
         sb.append(chatTitle);
         sb.append("' \t");
-        for (User u : usersInChat) {
-            sb.append(u.getUserID());
-            sb.append(", ");
+        if (!usersInChat.isEmpty()) {
+            for (User u : usersInChat) {
+                sb.append(u.getUserID());
+                sb.append(", ");
+            }
         }
         return sb.toString();
     }

@@ -7,25 +7,21 @@
 						    http://java.sun.com/xml/ns/persistence/orm_2_0.xsd"
         version="2.0">
 
+    <persistence-unit-metadata>
+    <xml-mapping-metadata-complete/>
+    <persistence-unit-defaults>
+    <schema>messenger</schema>
+    <!--<catalog>mycatalog</catalog>-->
+    <cascade-persist/>
+    </persistence-unit-defaults>
+    </persistence-unit-metadata>
 
-    <!--<persistence-unit-metadata>-->
-    <!--<xml-mapping-metadata-complete/>-->
-    <!--<persistence-unit-defaults>-->
-    <!--<schema>messenger</schema>-->
-    <!--&lt;!&ndash;<catalog>mycatalog</catalog>&ndash;&gt;-->
-    <!--<cascade-persist/>-->
-    <!--</persistence-unit-defaults>-->
-    <!--</persistence-unit-metadata>-->
-
-    <!--<sql-result-set-mapping name="ResultListMappingXml">-->
-    <!--<entity-result entity-claentities.UserUser">-->
-    <!--<field-result name="userID" column="authorId"/>-->
-    <!--<field-result name="firstName" column="firstName"/>-->
-    <!--<field-result name="lastName" column="lastName"/>-->
-    <!--<field-result name="version" column="version"/>-->
-    <!--</entity-result>-->
+    <!--<sql-result-set-mapping name="ShowAllMappingXml">-->
+        <!--<entity-result entity-class="entities.User">-->
+            <!--<field-result name="userID" column="USER_ID"/>-->
+            <!--<field-result name="nickname" column="NICKNAME"/>-->
+        <!--</entity-result>-->
     <!--</sql-result-set-mapping>-->
-
 
     <entity class="entities.User">
         <table name="USERS"/>
@@ -34,11 +30,9 @@
                 <column name="USER_ID"/>
                 <generated-value strategy="SEQUENCE"/>
             </id>
-
             <basic name="nickname">
                 <column name="NICKNAME" length="100"/>
             </basic>
-
             <many-to-many name="userChats" fetch="EAGER">
                 <join-table name="USERS_CHATS">
                     <join-column name="U_ID" referenced-column-name="USER_ID"/>
@@ -48,7 +42,6 @@
                     <cascade-all/>
                 </cascade>
             </many-to-many>
-
         </attributes>
     </entity>
 
@@ -56,26 +49,43 @@
     <entity class="entities.Chat">
         <table name="CHATS"/>
         <attributes>
-
             <id name="chatID">
                 <column name="CHAT_ID"/>
                 <generated-value strategy="SEQUENCE"/>
             </id>
-
-
             <basic name="chatTitle">
                 <column name="TITLECHAT" length="100"/>
             </basic>
-
             <many-to-many name="usersInChat" mapped-by="userChats" fetch="EAGER">
                 <cascade>
                     <cascade-all/>
                 </cascade>
             </many-to-many>
-
-
         </attributes>
     </entity>
+
+    <entity class="entities.Message">
+        <table name="MESSAGES"/>
+        <!--<id-class class="entities.MessagePrimaryKey"/>-->
+        <attributes>
+            <embedded-id name="messID"/>
+            <basic name="message">
+                <column name="MESSAGE" length="1000"/>
+            </basic>
+            <basic name="messageTime">
+                <column name="TIME"/>
+                <temporal>TIMESTAMP</temporal>
+            </basic>
+        </attributes>
+    </entity>
+
+    <embeddable class="entities.MessagePrimaryKey">
+        <attributes>
+            <basic name="messageID"/>
+            <basic name="chatID"/>
+            <basic name="userID"/>
+        </attributes>
+    </embeddable>
 
 
 </entity-mappings>

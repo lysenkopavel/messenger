@@ -40,12 +40,14 @@ public class User implements Serializable {
         sb.append("\t'");
         sb.append(nickname);
         sb.append("' \t");
-        for (Chat c:userChats){
-            sb.append(c.getChatID());
+        if (!userChats.isEmpty()) {
+            for (Chat c : userChats) {
+                sb.append(c.getChatID());
+                sb.append(", ");
+            }
         }
         return sb.toString();
     }
-
 
     @Override
     public int hashCode() {

@@ -6,7 +6,7 @@ import entities.User;
 import javax.persistence.Query;
 import java.util.List;
 
-public class UserOracleDAO extends OracleJpaDao<User> implements UserService{
+public class UserOracleDAO extends OracleJpaDao<User> implements UserService {
 
     public User read(int id) {
         return em.find(User.class, id);
@@ -16,10 +16,6 @@ public class UserOracleDAO extends OracleJpaDao<User> implements UserService{
         em.getTransaction().begin();
         em.remove(read(entity.getUserID()));
         em.getTransaction().commit();
-    }
-
-    public void updateObjectFromDB(User user) {
-        em.refresh(user);
     }
 
     public void showAll() {

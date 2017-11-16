@@ -30,4 +30,8 @@ public abstract class OracleJpaDao<T> implements EntityService<T> {
 
     public abstract void showAll();
 
+    public void updateObjectFromDB(T entity) {
+        em.refresh(entity);
+    }
+
 }

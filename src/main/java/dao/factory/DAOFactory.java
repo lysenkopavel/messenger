@@ -1,10 +1,8 @@
 package dao.factory;
 
-import dao.oraclejpa.OracleJpaDao;
 import dao.service.ChatService;
-import dao.service.EntityService;
+import dao.service.MessageService;
 import dao.service.UserService;
-import entities.*;
 
 public abstract class DAOFactory {
 
@@ -12,6 +10,7 @@ public abstract class DAOFactory {
 
     public abstract UserService getUserDAO();
     public abstract ChatService getChatDAO();
+    public abstract MessageService getMessageService();
 
     public static DAOFactory getDAOFactory(int whichFactory) {
         switch (whichFactory) {
