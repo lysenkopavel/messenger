@@ -1,9 +1,7 @@
-package dao.service;
+package mydao.service;
 
 import entities.Chat;
 import entities.User;
-
-import java.util.List;
 
 public interface UserService extends EntityService<User> {
 

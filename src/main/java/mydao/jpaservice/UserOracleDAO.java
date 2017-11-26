@@ -1,10 +1,9 @@
-package dao.oraclejpa;
+package mydao.jpaservice;
 
-import dao.service.*;
+import mydao.service.*;
 import entities.*;
 
 import javax.persistence.Query;
-import java.util.Arrays;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;

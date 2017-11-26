@@ -1,5 +1,5 @@
-import dao.factory.DAOFactory;
-import dao.service.*;
+import mydao.factory.DAOFactory;
+import mydao.service.*;
 import entities.*;
 
 import java.util.*;
@@ -24,10 +24,8 @@ public class Main {
         int cid1 = chatService.create("First Chat");
         int cid2 = chatService.create("Second Chat");
 
-        Chat c1 = chatService.read(cid1);
-        Chat c2 = chatService.read(cid2);
-        userService.addUserToChat(uid1, c1);
-        userService.addUserToChat(uid1, c2);
+        userService.addUserToChat(uid1, chatService.read(cid1));
+        userService.addUserToChat(uid1, chatService.read(cid2));
         userService.showUserChats(uid1);
         chatService.showChatUsers(cid1);
         chatService.showChatUsers(cid2);

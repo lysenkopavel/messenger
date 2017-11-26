@@ -1,7 +1,7 @@
-package dao.factory;
+package mydao.factory;
 
-import dao.oraclejpa.*;
-import dao.service.*;
+import mydao.jpaservice.*;
+import mydao.service.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;

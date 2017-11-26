@@ -1,6 +1,6 @@
-package dao.oraclejpa;
+package mydao.jpaservice;
 
-import dao.service.ChatService;
+import mydao.service.ChatService;
 import entities.*;
 
 import javax.persistence.Query;

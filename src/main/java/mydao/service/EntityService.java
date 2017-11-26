@@ -1,4 +1,4 @@
-package dao.service;
+package mydao.service;
 
 public interface EntityService<T> {
 

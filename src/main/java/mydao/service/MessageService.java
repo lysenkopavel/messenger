@@ -1,4 +1,4 @@
-package dao.service;
+package mydao.service;
 
 import entities.Message;
 

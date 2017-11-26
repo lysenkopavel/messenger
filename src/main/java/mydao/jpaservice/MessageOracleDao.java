@@ -1,6 +1,6 @@
-package dao.oraclejpa;
+package mydao.jpaservice;
 
-import dao.service.MessageService;
+import mydao.service.MessageService;
 import entities.Message;
 
 public class MessageOracleDao  extends OracleJpaDao<Message> implements MessageService {

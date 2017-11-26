@@ -1,8 +1,8 @@
-package dao.factory;
+package mydao.factory;
 
-import dao.service.ChatService;
-import dao.service.MessageService;
-import dao.service.UserService;
+import mydao.service.ChatService;
+import mydao.service.MessageService;
+import mydao.service.UserService;
 
 public abstract class DAOFactory {
 

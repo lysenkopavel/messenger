@@ -1,6 +1,6 @@
-package dao.oraclejpa;
+package mydao.jpaservice;
 
-import dao.service.EntityService;
+import mydao.service.EntityService;
 
 import javax.persistence.EntityManager;
 
