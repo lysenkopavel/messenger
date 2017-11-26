@@ -8,30 +8,7 @@ public class Chat implements Serializable {
     private int chatID;
     private String chatTitle;
     private Set<User> usersInChat;
-
-    public String getChatTitle() {
-        return chatTitle;
-    }
-
-    public void setChatTitle(String chatTitle) {
-        this.chatTitle = chatTitle;
-    }
-
-    public int getChatID() {
-        return chatID;
-    }
-
-    public void setChatID(int chatID) {
-        this.chatID = chatID;
-    }
-
-    public Set<User> getUsersInChat() {
-        return usersInChat;
-    }
-
-    public void setUsersInChat(Set<User> usersInChat) {
-        this.usersInChat = usersInChat;
-    }
+    private Set<Message> chatMessages;
 
     @Override
     public String toString() {
@@ -39,13 +16,7 @@ public class Chat implements Serializable {
         sb.append(chatID);
         sb.append("\t'");
         sb.append(chatTitle);
-        sb.append("' \t");
-        if (!usersInChat.isEmpty()) {
-            for (User u : usersInChat) {
-                sb.append(u.getUserID());
-                sb.append(", ");
-            }
-        }
+        sb.append("'");
         return sb.toString();
     }
 
@@ -74,4 +45,48 @@ public class Chat implements Serializable {
         return true;
     }
 
+    public Chat(String chatTitle) {
+        this.chatTitle = chatTitle;
+    }
+
+    public Chat(String chatTitle, Set<User> usersInChat) {
+        this.chatTitle = chatTitle;
+        this.usersInChat = usersInChat;
+    }
+
+    public Chat(){
+
+    }
+
+    public int getChatID() {
+        return chatID;
+    }
+
+    public void setChatID(int chatID) {
+        this.chatID = chatID;
+    }
+
+    public String getChatTitle() {
+        return chatTitle;
+    }
+
+    public void setChatTitle(String chatTitle) {
+        this.chatTitle = chatTitle;
+    }
+
+    public Set<User> getUsersInChat() {
+        return usersInChat;
+    }
+
+    public void setUsersInChat(Set<User> usersInChat) {
+        this.usersInChat = usersInChat;
+    }
+
+    public Set<Message> getChatMessages() {
+        return chatMessages;
+    }
+
+    public void setChatMessages(Set<Message> chatMessages) {
+        this.chatMessages = chatMessages;
+    }
 }

@@ -12,26 +12,19 @@ public abstract class OracleJpaDao<T> implements EntityService<T> {
         this.em = em;
     }
 
-    public void create(T entity) {
-        em.getTransaction().begin();
-        em.persist(entity);
-        em.getTransaction().commit();
-    }
-
-    public void update(T entity) {
-        em.getTransaction().begin();
-        em.merge(entity);
-        em.getTransaction().commit();
-    }
-
     public abstract T read(int id);
 
-    public abstract void delete(T entity);
+    public abstract void delete(int entityID);
 
-    public abstract void showAll();
+//    public void refresh(T entity) {
+//        em.getTransaction().begin();
+//        em.refresh(entity);
+//        em.getTransaction().commit();
+//    }
 
-    public void updateObjectFromDB(T entity) {
-        em.refresh(entity);
+    public void update(T entity) {
+//        em.getTransaction().begin();
+        em.merge(entity);
+//        em.getTransaction().commit();
     }
-
 }

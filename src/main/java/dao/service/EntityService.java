@@ -2,14 +2,11 @@ package dao.service;
 
 public interface EntityService<T> {
 
-    void create(T entity);
+    void delete(int entityID);
+
+    T read(int entityID);
 
     void update(T entity);
 
-    void delete(T entity);
-
-    T read(int id);
-
-    void updateObjectFromDB(T entity);
-
+//    void refresh(T entity);
 }

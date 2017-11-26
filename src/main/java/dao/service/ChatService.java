@@ -4,6 +4,12 @@ import entities.Chat;
 
 public interface ChatService extends EntityService<Chat> {
 
-    void showAll();
+    int create(String chatTitle);
+
+    void showAllChats();
+
+    void addUserToChat(int uID, int cID);
+
+    void showChatUsers(int cID);
 
 }

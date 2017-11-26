@@ -8,30 +8,7 @@ public class User implements Serializable {
     private int userID;
     private String nickname;
     private Set<Chat> userChats;
-
-    public Set<Chat> getUserChats() {
-        return userChats;
-    }
-
-    public void setUserChats(Set<Chat> userChats) {
-        this.userChats = userChats;
-    }
-
-    public int getUserID() {
-        return userID;
-    }
-
-    public void setUserID(int userID) {
-        this.userID = userID;
-    }
-
-    public String getNickname() {
-        return nickname;
-    }
-
-    public void setNickname(String nickname) {
-        this.nickname = nickname;
-    }
+    private Set<Message> userMessages;
 
     @Override
     public String toString() {
@@ -39,13 +16,7 @@ public class User implements Serializable {
         sb.append(userID);
         sb.append("\t'");
         sb.append(nickname);
-        sb.append("' \t");
-        if (!userChats.isEmpty()) {
-            for (Chat c : userChats) {
-                sb.append(c.getChatID());
-                sb.append(", ");
-            }
-        }
+        sb.append("'");
         return sb.toString();
     }
 
@@ -74,4 +45,43 @@ public class User implements Serializable {
         return true;
     }
 
+    public User() {
+
+    }
+
+    public User(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public int getUserID() {
+        return userID;
+    }
+
+    public void setUserID(int userID) {
+        this.userID = userID;
+    }
+
+    public String getNickname() {
+        return nickname;
+    }
+
+    public void setNickname(String nickname) {
+        this.nickname = nickname;
+    }
+
+    public Set<Chat> getUserChats() {
+        return userChats;
+    }
+
+    public void setUserChats(Set<Chat> userChats) {
+        this.userChats = userChats;
+    }
+
+    public Set<Message> getUserMessages() {
+        return userMessages;
+    }
+
+    public void setUserMessages(Set<Message> userMessages) {
+        this.userMessages = userMessages;
+    }
 }

@@ -9,11 +9,7 @@ public class MessageOracleDao  extends OracleJpaDao<Message> implements MessageS
         return null;
     }
 
-    public void delete(Message entity) {
-
-    }
-
-    public void showAll() {
+    public void delete(int entityID) {
 
     }
 }
