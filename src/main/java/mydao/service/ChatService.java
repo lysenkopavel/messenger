@@ -1,6 +1,9 @@
 package mydao.service;
 
 import entities.Chat;
+import entities.User;
+
+import java.util.Set;
 
 public interface ChatService extends EntityService<Chat> {
 
@@ -8,8 +11,13 @@ public interface ChatService extends EntityService<Chat> {
 
     void showAllChats();
 
-    void addUserToChat(int uID, int cID);
+    void addUserToChat(User user, Chat chat);
 
-    void showChatUsers(int cID);
+    void deleteUserFromChat(User user, Chat chat);
+
+    void showUsersChats();
+
+    Set<User> showChatUsers(int cID);
+
 
 }

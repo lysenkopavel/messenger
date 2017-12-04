@@ -3,16 +3,15 @@ package mydao.service;
 import entities.Chat;
 import entities.User;
 
+import java.util.List;
+import java.util.Set;
+
 public interface UserService extends EntityService<User> {
 
     int create(String nickname);
 
-    void showAllUsers();
+    List<User> showAllUsers();
 
-    void addUserToChat(int uID, Chat chat);
-
-    void deleteUserFromChat(int uID, Chat chat);
-
-    void showUserChats(int uID);
+    Set<Chat> showUserChats(int uID);
 
 }

@@ -4,7 +4,9 @@ import mydao.service.ChatService;
 import entities.*;
 
 import javax.persistence.Query;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService {
 
@@ -23,13 +25,6 @@ public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService {
         return chat;
     }
 
-    public void delete(int entityID) {
-        Chat c = read(entityID);
-        em.getTransaction().begin();
-        em.remove(c);
-        em.getTransaction().commit();
-    }
-
     public void showAllChats() {
         em.getTransaction().begin();
         Query query = em.createNativeQuery("select * from CHATS", Chat.class);
@@ -43,28 +38,43 @@ public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService {
         em.getTransaction().commit();
     }
 
-    //TODO
-    public void addUserToChat(int uID, int cID) {
-
-    }
-
-    public void showChatUsers(int cID) {
+    public void addUserToChat(User user, Chat chat) {
         em.getTransaction().begin();
-        Query query = em.createNativeQuery("select * from USERS_CHATS", "ShowUsersChatsMappingXml");
-        List<Object[]> resultUsersChats = query.getResultList();
-        System.out.println("Chat id" + cID + " users:");
-        for (Object[] o : resultUsersChats) {
-            Chat chat = (Chat) o[1];
-            int chatID = chat.getChatID();
-            if (cID == chatID) {
-                User user = (User) o[0];
-                int userID = user.getUserID();
-                System.out.printf("%d, ", userID);
-            }
+        Set<User> usersInChat = chat.getUsersInChat();
+        if (usersInChat == null) {
+            usersInChat = new HashSet<User>();
         }
-        System.out.println();
+        usersInChat.add(user);
+        chat.setUsersInChat(usersInChat);
         em.getTransaction().commit();
     }
 
+    public void deleteUserFromChat(User user, Chat chat) {
+        em.getTransaction().begin();
+        Set<User> usersInChat = chat.getUsersInChat();
+        if (usersInChat != null) {
+            usersInChat.remove(user);
+            chat.setUsersInChat(usersInChat);
+        }
+        em.getTransaction().commit();
+    }
+
+    public void showUsersChats() {
+        em.getTransaction().begin();
+        Query query = em.createNativeQuery("select * from USERS_CHATS", "ShowUsersChatsMappingXml");
+        List<Object[]> resultUsersChats = query.getResultList();
+        System.out.println("userID   chatID");
+        for (Object[] o : resultUsersChats) {
+            int chatID = ((Chat) o[1]).getChatID();
+            int userID = ((User) o[0]).getUserID();
+            System.out.printf("%d\t%d\n", userID, chatID);
+        }
+        em.getTransaction().commit();
+    }
+
+    public Set<User> showChatUsers(int cID) {
+        Chat chat = read(cID);
+        return chat.getUsersInChat();
+    }
 
 }
