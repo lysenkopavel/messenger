@@ -18,6 +18,7 @@
         <mapping-file>META-INF/orm.xml</mapping-file>
         <class>entities.Chat</class>
         <class>entities.User</class>
+        <class>entities.Message</class>
 
         <properties>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>

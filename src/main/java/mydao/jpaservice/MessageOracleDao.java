@@ -5,7 +5,9 @@ import entities.User;
 import mydao.service.MessageService;
 import entities.Message;
 
+import javax.persistence.Query;
 import java.util.Date;
+import java.util.List;
 
 public class MessageOracleDao extends OracleJpaDao<Message> implements MessageService {
 
@@ -16,10 +18,6 @@ public class MessageOracleDao extends OracleJpaDao<Message> implements MessageSe
         return message;
     }
 
-    public void delete(int entityID) {
-
-    }
-
     public int create(User user, Chat chat, String text, Date date) {
         Message message = new Message(user, chat, text, date);
         em.getTransaction().begin();
@@ -28,11 +26,17 @@ public class MessageOracleDao extends OracleJpaDao<Message> implements MessageSe
         return message.getMessageID();
     }
 
-    public void showAllMessagesFromChat(int chatID) {
-
+    public List<Message> showAllMessagesFromChat(int chatID) {
+        em.getTransaction().begin();
+        StringBuilder sb = new StringBuilder();
+        sb.append("select * from MESSAGES WHERE CHATID = ");
+        sb.append(chatID);
+        sb.append(" ORDER BY TIME DESC");
+        String queryString = sb.toString();
+        Query query = em.createNativeQuery(queryString, Message.class);
+        List<Message> resultList = query.getResultList();
+        em.getTransaction().commit();
+        return resultList;
     }
 
-    public void showAllUserMessagesFromChat() {
-
-    }
 }

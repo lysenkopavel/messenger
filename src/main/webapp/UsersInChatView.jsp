@@ -3,35 +3,34 @@
 
 <html>
 <head>
-    <title>Users</title>
+    <title>Users in chat</title>
 </head>
 <body>
 
 <jsp:include page="includejsp/_header.jsp"/>
 <jsp:include page="includejsp/_menu.jsp"/>
 
-<h3>Users Page</h3>
+<h3>Users in chat "${currentChat.chatTitle}" (ID=${currentChat.chatID})</h3>
 
-Listing all registered users
 
 <table border="1" cellpadding="3" cellspacing="1" >
     <tr>
         <th>ID</th>
         <th>nickname</th>
-        <th>Delete</th>
+        <th>Delete from chat</th>
     </tr>
-    <c:forEach items="${listUsers}" var="users" >
+    <c:forEach items="${currentChat.usersInChat}" var="users" >
         <tr>
             <td>${users.userID}</td>
             <td>${users.nickname}</td>
             <td>
-                <a href="deleteUser?userID=${users.userID}">delete</a>
+                <a href="deleteUserFromChat?userID=${users.userID}&chatID=${currentChat.chatID}">delete</a>
             </td>
         </tr>
     </c:forEach>
 </table>
 
-<a href="createUser" >Create User</a>
+<a href="nonChatUsers?chatID=${currentChat.chatID}" >Add User to chat "${currentChat.chatTitle}"</a>
 
 
 <jsp:include page="includejsp/_footer.jsp"/>

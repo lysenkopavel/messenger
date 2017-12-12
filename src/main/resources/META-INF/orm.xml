@@ -30,6 +30,10 @@
         </entity-result>
     </sql-result-set-mapping>
 
+    <sql-result-set-mapping name="MessagesFromChat">
+        <entity-result entity-class="entities.Message"/>
+    </sql-result-set-mapping>
+
     <entity class="entities.User">
         <table name="USERS"/>
         <attributes>
@@ -47,9 +51,9 @@
             </one-to-many>
             <!--Work with LAZY-->
             <many-to-many name="userChats" mapped-by="usersInChat" fetch="EAGER">
-                <cascade>
-                    <cascade-all/>
-                </cascade>
+                <!--<cascade>-->
+                    <!--<cascade-all/>-->
+                <!--</cascade>-->
             </many-to-many>
         </attributes>
     </entity>
@@ -75,9 +79,9 @@
                     <join-column name="C_ID" referenced-column-name="CHAT_ID"/>
                     <inverse-join-column name="U_ID" referenced-column-name="USER_ID"/>
                 </join-table>
-                <cascade>
-                    <cascade-all/>
-                </cascade>
+                <!--<cascade>-->
+                    <!--<cascade-all/>-->
+                <!--</cascade>-->
             </many-to-many>
         </attributes>
     </entity>

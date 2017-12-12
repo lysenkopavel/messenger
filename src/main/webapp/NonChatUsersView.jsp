@@ -10,7 +10,7 @@
 <jsp:include page="includejsp/_header.jsp"/>
 <jsp:include page="includejsp/_menu.jsp"/>
 
-<h3>Users Page</h3>
+<h3>Add User to chat "${currentChat.chatTitle}" (ID=${currentChat.chatID})</h3>
 
 Listing all registered users
 
@@ -18,23 +18,22 @@ Listing all registered users
     <tr>
         <th>ID</th>
         <th>nickname</th>
-        <th>Delete</th>
+        <th>Add to "${currentChat.chatTitle}" (ID=${currentChat.chatID})</th>
     </tr>
-    <c:forEach items="${listUsers}" var="users" >
+    <c:forEach items="${nonChatUsers}" var="users" >
         <tr>
             <td>${users.userID}</td>
             <td>${users.nickname}</td>
             <td>
-                <a href="deleteUser?userID=${users.userID}">delete</a>
+                <a href="addSelectUserToChat?userID=${users.userID}&chatID=${currentChat.chatID}">add</a>
             </td>
         </tr>
     </c:forEach>
 </table>
-
-<a href="createUser" >Create User</a>
 
 
 <jsp:include page="includejsp/_footer.jsp"/>
 
 </body>
 </html>
+

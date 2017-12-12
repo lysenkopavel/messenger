@@ -1,0 +1,131 @@
+<!DOCTYPE web-app PUBLIC
+        "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+        "http://java.sun.com/dtd/web-app_2_3.dtd" >
+
+<web-app
+        xmlns="http://java.sun.com/xml/ns/javaee"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+        version="2.5">
+
+    <display-name>Messenger</display-name>
+
+    <listener>
+        <listener-class>JpaListener</listener-class>
+    </listener>
+
+    <welcome-file-list>
+        <welcome-file>home</welcome-file>
+        <welcome-file>index.html</welcome-file>
+    </welcome-file-list>
+
+    <servlet>
+        <servlet-name>HomeServlet</servlet-name>
+        <servlet-class>Servlets.HomeServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>HomeServlet</servlet-name>
+        <url-pattern>/home</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsersServlet</servlet-name>
+        <servlet-class>Servlets.UsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersServlet</servlet-name>
+        <url-pattern>/users</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <servlet-class>Servlets.CreateUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateUserServlet</servlet-name>
+        <url-pattern>/createUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <servlet-class>Servlets.DeleteUserServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserServlet</servlet-name>
+        <url-pattern>/deleteUser</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ChatsServlet</servlet-name>
+        <servlet-class>Servlets.ChatsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ChatsServlet</servlet-name>
+        <url-pattern>/chats</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>CreateChatServlet</servlet-name>
+        <servlet-class>Servlets.CreateChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CreateChatServlet</servlet-name>
+        <url-pattern>/createChat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteChatServlet</servlet-name>
+        <servlet-class>Servlets.DeleteChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteChatServlet</servlet-name>
+        <url-pattern>/deleteChat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>UsersInChatServlet</servlet-name>
+        <servlet-class>Servlets.UsersInChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>UsersInChatServlet</servlet-name>
+        <url-pattern>/usersInChat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>NonChatUsersServlet</servlet-name>
+        <servlet-class>Servlets.NonChatUsersServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>NonChatUsersServlet</servlet-name>
+        <url-pattern>/nonChatUsers</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>AddUserToChatServlet</servlet-name>
+        <servlet-class>Servlets.AddUserToChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>AddUserToChatServlet</servlet-name>
+        <url-pattern>/addSelectUserToChat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>DeleteUserFromChatServlet</servlet-name>
+        <servlet-class>Servlets.DeleteUserFromChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>DeleteUserFromChatServlet</servlet-name>
+        <url-pattern>/deleteUserFromChat</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OpenChatServlet</servlet-name>
+        <servlet-class>Servlets.OpenChatServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OpenChatServlet</servlet-name>
+        <url-pattern>/openChat</url-pattern>
+    </servlet-mapping>
+
+
+</web-app>

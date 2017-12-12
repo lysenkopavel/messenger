@@ -25,17 +25,18 @@ public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService {
         return chat;
     }
 
-    public void showAllChats() {
+    public List<Chat> showAllChats() {
         em.getTransaction().begin();
         Query query = em.createNativeQuery("select * from CHATS", Chat.class);
         List<Chat> resultList = query.getResultList();
-        System.out.println("Listing Chats:");
-        if (!resultList.isEmpty()) {
-            for (Chat c : resultList) {
-                System.out.println(c.toString());
-            }
-        }
+//        System.out.println("Listing Chats:");
+//        if (!resultList.isEmpty()) {
+//            for (Chat c : resultList) {
+//                System.out.println(c.toString());
+//            }
+//        }
         em.getTransaction().commit();
+        return resultList;
     }
 
     public void addUserToChat(User user, Chat chat) {
@@ -76,5 +77,6 @@ public class ChatOracleDAO extends OracleJpaDao<Chat> implements ChatService {
         Chat chat = read(cID);
         return chat.getUsersInChat();
     }
+
 
 }
