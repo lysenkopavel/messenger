@@ -1,6 +1,7 @@
-package dao.oraclejpa;
+package mydao.jpaservice;
 
-import dao.service.EntityService;
+import mydao.service.ChatService;
+import mydao.service.EntityService;
 
 import javax.persistence.EntityManager;
 
@@ -12,9 +13,12 @@ public abstract class OracleJpaDao<T> implements EntityService<T> {
         this.em = em;
     }
 
-    public void create(T entity) {
+    public abstract T read(int entityID);
+
+    public void delete(int entityID){
+        T entity = read(entityID);
         em.getTransaction().begin();
-        em.persist(entity);
+        em.remove(entity);
         em.getTransaction().commit();
     }
 
@@ -23,15 +27,4 @@ public abstract class OracleJpaDao<T> implements EntityService<T> {
         em.merge(entity);
         em.getTransaction().commit();
     }
-
-    public abstract T read(int id);
-
-    public abstract void delete(T entity);
-
-    public abstract void showAll();
-
-    public void updateObjectFromDB(T entity) {
-        em.refresh(entity);
-    }
-
 }

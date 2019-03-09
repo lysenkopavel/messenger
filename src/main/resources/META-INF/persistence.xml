@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+<!--<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+             <!--xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence-->
+  <!--http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"-->
+             <!--version="2.1">-->
+
+
+    <!--<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence"-->
+    <!--xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"-->
+    <!--xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd"-->
+    <!--version="2.1">-->
+
+    <persistence xmlns="http://java.sun.com/xml/ns/persistence" version="2.0">
+
     <persistence-unit name="messenger" transaction-type="RESOURCE_LOCAL">
         <provider>org.hibernate.ejb.HibernatePersistence</provider>
 
         <mapping-file>META-INF/orm.xml</mapping-file>
         <class>entities.Chat</class>
         <class>entities.User</class>
+        <class>entities.Message</class>
 
         <properties>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
@@ -14,6 +27,8 @@
             <property name="hibernate.connection.username" value="messenger"/>
             <property name="hibernate.connection.password" value="messenger"/>
             <property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+            <property name="hibernate.show_sql" value="true"/>
         </properties>
     </persistence-unit>
+
 </persistence>

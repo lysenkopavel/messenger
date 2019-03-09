@@ -1,5 +1,5 @@
-import dao.factory.DAOFactory;
-import dao.service.*;
+import mydao.factory.DAOFactory;
+import mydao.service.*;
 import entities.*;
 
 import java.util.*;
@@ -12,51 +12,27 @@ public class Main {
         Locale.setDefault(Locale.ENGLISH);
 
         DAOFactory daoObject = DAOFactory.getDAOFactory(DAOFactory.ORACLE_JPA);
-        UserService daoUser = daoObject.getUserDAO();
-        ChatService daoChat = daoObject.getChatDAO();
-        MessageService daoMessage = daoObject.getMessageService();
+        UserService userService = daoObject.getUserDAO();
+        ChatService chatService = daoObject.getChatDAO();
+        MessageService messageService = daoObject.getMessageService();
 
-        Chat chat = new Chat();
-        chat.setChatTitle("MyChat");
+        int uid1 = userService.create("Roman");
+        int uid2 = userService.create("Ivan");
+        int uid3 = userService.create("Petr");
+        int cid1 = chatService.create("First Chat");
 
-        User u1 = new User();
-        User u2 = new User();
-        User u3 = new User();
-        u1.setNickname("Ivan");
-        u2.setNickname("Petr");
-        u3.setNickname("Max");
-        Set<Chat> setChat = new HashSet<Chat>();
-        setChat.add(chat);
-        u1.setUserChats(setChat);
-        u2.setUserChats(setChat);
-        u3.setUserChats(setChat);
+        chatService.addUserToChat(userService.read(uid1), chatService.read(cid1));
+
+        Chat chat = chatService.read(cid1);
+        User userWithChat = userService.read(uid1);
 
 
-        daoChat.create(chat);
-        daoUser.create(u1);
-        daoUser.create(u2);
-        daoUser.create(u3);
-        daoChat.updateObjectFromDB(chat);
-        daoUser.showAll();
-        daoChat.showAll();
-//        System.out.println("----------------------------");
-//        u1.setUserChats(new HashSet<Chat>());
-//        daoUser.update(u1);
-//        daoChat.updateObjectFromDB(chat);
-//        daoUser.showAll();
-//        daoChat.showAll();
+        userService.showAllUsers();
 
-        Message message = new Message();
-        message.setMessage("test text");
-        message.setMessID(new MessagePrimaryKey(u3.getUserID(), chat.getChatID(), 0));
-        message.setMessageTime(new Date());
-
-        //
-        daoMessage.create(message);
-
+//        Message m1 = new Message(u1, c1, "test text", new Date());
+//        daoMessage.create(m1);
+//        daoChat.refresh(m1.getMessageToChat());
 
     }
-
-
 
 }
